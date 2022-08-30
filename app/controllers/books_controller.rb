@@ -8,8 +8,11 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @books = Book.all
     if @book.save
+      flash[:notice] = "update"
       redirect_to book_path(@book.id)
     else
+      flash[:alret] = "miss"
+      @books = Book.all
       render :index
     end
 

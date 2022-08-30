@@ -15,8 +15,8 @@
     <td><%= book.title %></td>
     <td><%= book.body %></td>
     <td><%= link_to "Show", book_path(book.id) %></td>
-    <td><%= link_to "Edit", book_path(book.id) %></td>
-    <td><%= link_to "Destory", book_path(book.id) %></td>
+    <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+    <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
   </tr>
 
   <% end %>
@@ -41,10 +41,11 @@
   <%= f.text_area :body %>
   <%= f.submit 'Create Book' %>
 
-  <div class="flash-notifications">
-  <% flash.each do |key, value| %>
-   <%= content_tag(:div, value, class: key) %>
-  <% end %>
-  </div>
+<div class="text-success">
+  <%= flash[:notice] %>
+</div>
+<div class="text-danger">
+  <%= flash[:alret] %>
+</div>
 
 <% end %>
