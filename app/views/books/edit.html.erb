@@ -1,6 +1,14 @@
 <h1>Editing Book</h1>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<%= form_with model: @book, url: edit_book_path(@book.id), method: :patch do |f| %>
+<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
 
 
   <h4>Title</h4>
